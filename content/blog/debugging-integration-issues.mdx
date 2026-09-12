@@ -1,0 +1,36 @@
+---
+title: "Debugging Integration Issues: Ruling Things Out in Order"
+description: "A generalized walkthrough of how I approach a broken integration — three ambiguous causes that produce the same symptom, and the order I check them in."
+date: "2026-06-01"
+tags: ["integration", "debugging"]
+---
+
+Note: the specifics here are generalized rather than tied to any particular system or client — the pattern is the useful part, not the implementation detail.
+
+A field arrives empty when it shouldn't. That's the entire bug report, and it's almost never useful on its own, because in a mapping-heavy integration, at least three unrelated things can produce exactly that symptom.
+
+## The three suspects
+
+**1. The value was never there to begin with.** The upstream system genuinely didn't send it — a legitimately empty or null field, not a bug at all, just a case the downstream side wasn't expecting.
+
+**2. The lookup missed.** If the mapping uses something like a JSONPath expression to pull a value out of a payload, a path that's slightly wrong — a typo, a nesting level off by one, a field that moved in a newer payload version — will silently resolve to nothing instead of throwing an obvious error.
+
+**3. Processing failed partway through.** The value was there, the lookup found it, but a transformation step in between — a date conversion, a lookup-table substitution — hit an edge case and produced an empty result instead of erroring loudly.
+
+All three look identical at the point where someone notices the bug. None of them look identical if you check them in the right order.
+
+## The order that actually works
+
+Start upstream, not at the symptom. Pull the raw source payload for the exact transaction that failed, and check whether the value was actually present before anything touched it. This one check eliminates suspect #1 immediately and takes less time than any other step.
+
+```text
+1. Raw source payload  → is the value present at all?
+2. Mapping spec         → does the configured path/rule match the raw payload's actual shape?
+3. Processing logic     → does the transformation step behave correctly on this specific value?
+```
+
+If the value is present in the source but missing after mapping, the problem lives in steps 2 or 3 — and it's worth testing the mapping in isolation before assuming the transformation logic is at fault. A surprising number of "processing bugs" turn out to be a mapping path that quietly stopped matching after an upstream schema change.
+
+## Why order matters more than tools
+
+You could build tooling to automate any one of these checks, but the actual leverage is in not skipping a step because the *last* bug you fixed happened to be caused by step 3. Every recurring bug pattern I've run into eventually produced a case that broke that assumption — which is really just a reminder that the fastest debugging habit is also the most disciplined one: check the cheapest, most falsifiable thing first, every time, even when you're confident you already know the answer.

@@ -1,0 +1,39 @@
+---
+title: "What Is Middleware, Really?"
+description: "Middleware gets described a dozen different ways depending on context. Here's the version that actually helped it click for me, from the integration side."
+date: "2026-04-14"
+tags: ["integration", "backend"]
+---
+
+Ask five engineers to define "middleware" and you'll get five different answers, because the word gets reused across a few genuinely different concepts. The one I work with daily is **integration middleware** — software whose entire job is sitting between two other systems and translating between them.
+
+## The problem it solves
+
+Imagine two systems that need to exchange data: a core platform and an external partner system. Neither was built with the other in mind. They structure their data differently, name their fields differently, and disagree about formats — dates, currency amounts, even how they represent something as basic as "no value."
+
+You have two options: change one of the systems to match the other, or put something in between that translates. Changing either system is usually off the table — one of them isn't yours, or it serves other consumers you can't disrupt. So the translator wins by default, and that translator is your middleware.
+
+## What the translation actually looks like
+
+At the field level, this is mapping: "the value at `payload.customer.id` in System A becomes `payload.client_reference` in System B." Multiply that by every field in every message type, and a moderately complex integration can involve hundreds of individual mapping rules.
+
+```json
+// System A's shape
+{
+  "customer": { "id": "C-10234", "fullName": "..." }
+}
+
+// System B expects
+{
+  "client_reference": "C-10234",
+  "client_name": "..."
+}
+```
+
+Most of the time this is mechanical. The interesting bugs live in the exceptions: what happens when a field is legitimately empty versus missing versus failed to process? Those three cases often produce the exact same output — an empty string — which means the mapping layer alone can't always tell you which one you're looking at. That ambiguity is behind a surprising number of integration bugs that look unrelated on the surface.
+
+## Why this work is mostly invisible
+
+Good middleware is judged by how little anyone thinks about it. When it works, two systems that were never designed to talk to each other just... talk to each other, and nobody downstream needs to know the translation happened at all. When it breaks, though, the failure can show up several systems away from the actual cause — which is exactly why debugging it usually starts with tracing a payload backward through every layer it passed through, not just looking at wherever the error surfaced.
+
+That backward-tracing instinct — treat the visible symptom as a starting point, not the answer — is probably the single most transferable skill from doing this work day to day.

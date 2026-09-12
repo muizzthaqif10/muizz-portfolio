@@ -1,0 +1,58 @@
+---
+title: "Understanding Docker Containers Without the Hand-Waving"
+description: "What a container actually is under the hood, why it's not a lightweight VM, and the handful of Docker commands that cover most daily use."
+date: "2026-02-10"
+tags: ["docker", "cloud"]
+---
+
+"A container is like a lightweight virtual machine" is the explanation almost everyone gets first, and it's the reason containers feel confusing for longer than they should. It's a useful analogy for about five minutes, and actively misleading after that.
+
+## What a container actually is
+
+A container is a regular process running on your machine's existing operating system kernel — not a separate mini-OS. Docker uses two Linux kernel features to make that process *look* isolated:
+
+- **Namespaces** — give the process its own view of things like the filesystem, network interfaces, and process list, so it can't see (or interfere with) anything outside itself.
+- **Control groups (cgroups)** — limit how much CPU, memory, and I/O the process is allowed to use.
+
+That's it. No hypervisor, no separate kernel, no boot process. This is why containers start in milliseconds instead of the tens of seconds a VM takes, and why they're so much lighter on resources.
+
+## Images vs. containers
+
+An image is a read-only template — your application plus everything it needs to run, packaged into layers. A container is a running instance of that image, with a thin writable layer on top for anything the process changes at runtime.
+
+```bash
+# Build an image from a Dockerfile
+docker build -t hello-api:1.4.0 .
+
+# Run a container from that image
+docker run -p 8080:8080 hello-api:1.4.0
+
+# See what's currently running
+docker ps
+
+# Follow the logs of a running container
+docker logs -f <container-id>
+```
+
+Because the image is immutable, you can run the exact same image on your laptop, in CI, and in production, and get the same behavior every time — that consistency is the actual point of Docker, more than the isolation itself.
+
+## Why layers matter
+
+Each instruction in a Dockerfile creates a new layer, and Docker caches layers it's already built. Put your slowest-changing instructions (installing dependencies) before your fastest-changing ones (copying your application code), and most rebuilds only redo the last step or two instead of starting from scratch.
+
+```dockerfile
+FROM node:20-slim
+WORKDIR /app
+
+# Dependencies change rarely — cache this layer
+COPY package*.json ./
+RUN npm ci
+
+# Application code changes constantly — keep it last
+COPY . .
+CMD ["node", "server.js"]
+```
+
+### A note on state
+
+Anything written inside a container's writable layer disappears when the container is removed. If you need data to survive — a database's files, uploaded content — mount a volume. It's the single most common thing beginners get bitten by, so it's worth internalizing early rather than after losing a day's worth of test data.

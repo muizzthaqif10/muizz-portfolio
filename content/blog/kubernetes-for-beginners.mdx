@@ -1,0 +1,71 @@
+---
+title: "Kubernetes for Beginners: The Four Objects I Wish I'd Understood First"
+description: "A practical starting point for Kubernetes — Pods, Deployments, Services and ConfigMaps, explained the way I wish someone had explained them to me."
+date: "2026-03-02"
+tags: ["kubernetes", "cloud"]
+---
+
+Kubernetes has a lot of surface area, and most beginner guides try to cover all of it at once. That's how you end up skimming fifteen resource types without really understanding any of them. This post is the opposite: four objects, explained properly, that will get you further than you'd expect.
+
+## Pods: the smallest thing you can deploy
+
+A Pod is one or more containers that always run together, on the same machine, sharing the same network address. In practice, most Pods run a single container — the "one or more" part exists for sidecar patterns, which you can safely ignore for now.
+
+The important mental model: **you don't create Pods directly in production.** You describe what you want, and something else creates and manages Pods for you. That "something else" is usually a Deployment.
+
+## Deployments: Pods that manage themselves
+
+A Deployment describes the *desired state* of a set of Pods — which container image, how many replicas, how to roll out updates. Kubernetes then continuously works to make reality match that description.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-api
+  template:
+    metadata:
+      labels:
+        app: hello-api
+    spec:
+      containers:
+        - name: hello-api
+          image: hello-api:1.4.0
+          ports:
+            - containerPort: 8080
+```
+
+If a Pod crashes, the Deployment notices the replica count no longer matches and creates a replacement. This is the core of Kubernetes' self-healing behavior, and it's worth sitting with until it clicks — everything else builds on it.
+
+## Services: a stable address for Pods that come and go
+
+Pods are disposable. Every time one restarts, it can get a new internal IP address. A Service solves this by giving a stable name and address that routes to whichever Pods currently match its label selector.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-api
+spec:
+  selector:
+    app: hello-api
+  ports:
+    - port: 80
+      targetPort: 8080
+```
+
+Other services in the cluster can now talk to `hello-api` by name, without knowing or caring which specific Pods are behind it.
+
+## ConfigMaps: separating configuration from code
+
+A ConfigMap holds configuration data as key-value pairs, which you can mount into a Pod as environment variables or files. The point isn't the mechanism — it's the discipline it forces: your container image stops needing to change every time a config value does.
+
+### Putting it together
+
+Once these four click, most of what looks intimidating in a real cluster is really just combinations and variations of them — an Ingress is a more specific kind of routing in front of Services, a StatefulSet is a Deployment with stronger identity guarantees, and so on.
+
+If you want to try this hands-on without touching a real cluster, [Minikube](https://minikube.sigs.k8s.io/) is the easiest way to run all four of these locally in about ten minutes.

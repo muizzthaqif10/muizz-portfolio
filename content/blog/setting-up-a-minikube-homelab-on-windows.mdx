@@ -1,0 +1,39 @@
+---
+title: "Setting Up a Minikube Home Lab on Windows (After Hyper-V Got in the Way)"
+description: "Notes from getting a local Kubernetes cluster running on Windows — and the driver conflict that ate the first hour."
+date: "2026-07-05"
+tags: ["kubernetes", "learning"]
+---
+
+I wanted a low-stakes place to actually work through Kubernetes resource types instead of only meeting them one at a time in production tickets. Minikube is the standard answer for "a real cluster on your own machine," so that's where I started — and the very first obstacle had nothing to do with Kubernetes at all.
+
+## The Hyper-V conflict
+
+Minikube's default driver on Windows tries to use Hyper-V, and if you've got other virtualization software installed — or certain Windows features enabled — you can end up with conflicts that are hard to diagnose from the error message alone. After losing more time than I'd like to admit to this, the fix was simpler than the debugging: skip Hyper-V entirely and use the Docker driver instead.
+
+```bash
+minikube start --driver=docker
+```
+
+If you already have Docker Desktop installed, this sidesteps the Hyper-V question completely and gets you a running cluster in a couple of minutes.
+
+## Working through resource types deliberately
+
+With the cluster up, the plan was to touch each core resource type on its own, rather than jumping straight into a multi-service app where any given YAML file has ten things going on at once.
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl get pods
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+```
+
+That loop — apply, get, describe, logs — covers most of what you need to understand whether something is working and, if not, why. I went through it for Deployments, Services, ConfigMaps, Ingress, and PersistentVolume/PersistentVolumeClaim pairs, one at a time.
+
+### What stuck the most
+
+Ingress and PV/PVC were the two that didn't fully make sense until I'd broken them on purpose. Ingress rules are easy to write incorrectly in a way that fails silently — no error, just traffic that doesn't route where you expected — and PV/PVC only really clicks once you've watched a Pod restart and either kept or lost its data depending on whether a volume was actually wired up correctly.
+
+## What's next
+
+The obvious next step is deploying something with more than one moving part — a small API plus a database — so the resource types have to cooperate instead of being exercised in isolation. That's the next post in this series, once it's actually running.
