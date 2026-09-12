@@ -9,7 +9,7 @@ const levelTone = {
 
 export function SkillGroup({ group }: { group: SkillGroupType }) {
   return (
-    <div className="rounded-xl border border-border bg-surface p-5">
+    <div className="surface-lift rounded-xl border border-border bg-surface/80 p-5">
       <h3 className="mb-4 font-mono text-sm text-muted">
         <span className="text-accent">{'// '}</span>
         {group.title}

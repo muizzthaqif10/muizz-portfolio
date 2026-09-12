@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, Copy, Mail } from 'lucide-react';
+import { Check, Copy, LoaderCircle, Mail } from 'lucide-react';
 import { profile } from '@/data/profile';
 import { Button } from '@/components/ui/Button';
 import { GithubIcon, LinkedinIcon } from '@/components/icons/BrandIcons';
 
 export function ContactSection({ withForm = false }: { withForm?: boolean }) {
   const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   async function copyEmail() {
     try {
@@ -16,6 +17,29 @@ export function ContactSection({ withForm = false }: { withForm?: boolean }) {
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
       // Clipboard API unavailable — the email is still visible on the page.
+    }
+  }
+
+  async function submitForm(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus('sending');
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+      });
+
+      if (!response.ok) throw new Error('Unable to send message');
+
+      form.reset();
+      setStatus('success');
+    } catch {
+      setStatus('error');
     }
   }
 
@@ -69,51 +93,77 @@ export function ContactSection({ withForm = false }: { withForm?: boolean }) {
       {withForm && (
         <form
           className="space-y-4 rounded-xl border border-border bg-surface p-6"
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={submitForm}
         >
-          <p className="hidden font-mono text-xs text-muted">
-            This form isn&apos;t wired to a backend yet — connect it to Resend, Formspree, or a
-            Vercel Function via <code>NEXT_PUBLIC_CONTACT_FORM_ENDPOINT</code>.
-          </p>
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+          </div>
           <div>
             <label htmlFor="name" className="mb-1.5 block text-sm text-foreground">
-              Name
+              Your full name
             </label>
             <input
               id="name"
               name="name"
               type="text"
               required
+              autoComplete="name"
+              placeholder="e.g. Aisha Rahman"
               className="w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none focus-visible:border-accent"
             />
           </div>
           <div>
             <label htmlFor="email" className="mb-1.5 block text-sm text-foreground">
-              Email
+              Your email address
             </label>
             <input
               id="email"
               name="email"
               type="email"
               required
+              autoComplete="email"
+              placeholder="you@example.com"
               className="w-full rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none focus-visible:border-accent"
             />
           </div>
           <div>
             <label htmlFor="message" className="mb-1.5 block text-sm text-foreground">
-              Message
+              How can I help you?
             </label>
             <textarea
               id="message"
               name="message"
               rows={4}
               required
+              placeholder="Tell me a little about your project or question..."
               className="w-full resize-none rounded-md border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none focus-visible:border-accent"
             />
           </div>
-          <Button type="submit" className="w-full">
-            Send message
+          <Button type="submit" className="w-full" disabled={status === 'sending'}>
+            {status === 'sending' ? (
+              <>
+                <LoaderCircle size={16} className="animate-spin" aria-hidden />
+                Sending...
+              </>
+            ) : (
+              'Send message'
+            )}
           </Button>
+          <p
+            aria-live="polite"
+            className={
+              status === 'error'
+                ? 'text-sm text-danger'
+                : status === 'success'
+                  ? 'text-sm text-signal'
+                  : 'hidden'
+            }
+          >
+            {status === 'success'
+              ? 'Thanks, your message has been sent.'
+              : 'Something went wrong. Please email me directly instead.'}
+          </p>
         </form>
       )}
     </div>

@@ -16,23 +16,23 @@ export function Hero() {
         aria-hidden
       />
 
-      <Container className="relative py-20 sm:py-28">
+      <Container className="relative py-20 sm:py-32">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            <p className="mb-5 font-mono text-sm text-accent">
+            <p className="mb-5 inline-flex rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 font-mono text-xs text-accent">
               <span className="text-muted">{'// '}</span>
               hi, I&apos;m {profile.shortName}
             </p>
-            <h1 className="text-balance text-4xl font-semibold leading-[1.1] text-foreground sm:text-5xl">
+            <h1 className="mt-5 max-w-3xl text-balance text-4xl font-semibold leading-[1.06] text-foreground sm:text-6xl">
               Software engineer building integrations, APIs &amp; cloud systems.
             </h1>
-            <p className="mt-6 max-w-lg text-balance text-lg text-muted">
+            <p className="mt-7 max-w-xl text-balance text-lg leading-relaxed text-muted">
               I work on software that connects applications, services and banking
               platforms to each other — the middleware, mappings and infrastructure
               most people never see.
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center gap-3">
               <Button href="/projects">
                 View Projects
                 <ArrowUpRight size={16} aria-hidden />

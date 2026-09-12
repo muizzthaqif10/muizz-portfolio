@@ -15,7 +15,7 @@ export function FlowVisual() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="rounded-xl border border-border bg-surface-raised p-5">
+    <div className="surface-lift rounded-2xl border border-border bg-surface-raised/80 p-5 backdrop-blur-sm sm:p-6">
       <div className="mb-4 flex items-center justify-between">
         <span className="font-mono text-xs text-muted">request-flow.trace</span>
         <span className="flex items-center gap-1.5 font-mono text-xs text-signal">

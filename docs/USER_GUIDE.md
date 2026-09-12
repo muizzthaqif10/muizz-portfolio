@@ -301,22 +301,16 @@ the data files does not regenerate it. To update it:
 
 ## 12. Setting Up the Contact Form
 
-The form on `/contact` is fully styled and functional in the browser, but isn't wired to
-anywhere yet — submitting it currently does nothing. To connect it:
+The form sends messages through Resend using the server-side `/api/contact` route. Add
+these server-only environment variables to `.env.local` for local development and to
+your Vercel project settings for production:
 
-1. Pick a backend: [Resend](https://resend.com), [Formspree](https://formspree.io), or a
-   small [Vercel Function](https://vercel.com/docs/functions) you write yourself.
-2. Add the endpoint to `.env.local`:
-   ```
-   NEXT_PUBLIC_CONTACT_FORM_ENDPOINT=https://your-endpoint-here
-   ```
-3. Open `src/components/contact/ContactSection.tsx` and update the form's `onSubmit`
-   handler to `fetch()` that endpoint with the form data, instead of the current
-   `e.preventDefault()` placeholder.
+```bash
+RESEND_API_KEY=re_your_api_key
+CONTACT_EMAIL=your-email@example.com
+```
 
-Until you do this, the copy-email button and social links on the same page still work
-fully — the form is the only piece that needs wiring.
-
+The form will show an error instead of sending when these values are not configured.
 ---
 
 ## 13. Customizing Colors, Fonts & Theme

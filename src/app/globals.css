@@ -3,14 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f6f7f9;
-  --surface: #ffffff;
+  --background: #f3f6f4;
+  --surface: #fbfcfa;
   --surface-raised: #ffffff;
-  --border: #e2e5eb;
-  --border-strong: #ccd2db;
-  --foreground: #10151d;
-  --muted: #5b6472;
-  --accent: #0c9c88;
+  --border: #d9e3df;
+  --border-strong: #b9cbc5;
+  --foreground: #10201d;
+  --muted: #5b706a;
+  --accent: #087f70;
   --accent-foreground: #ffffff;
   --amber: #a8710a;
   --signal: #3f8f4f;
@@ -22,15 +22,15 @@
 }
 
 .dark {
-  --background: #0a0e14;
-  --surface: #10151d;
-  --surface-raised: #141a23;
-  --border: #1e2530;
-  --border-strong: #2b3441;
-  --foreground: #e6eaf0;
-  --muted: #8b95a5;
-  --accent: #5eead4;
-  --accent-foreground: #06201b;
+  --background: #081311;
+  --surface: #0e1c19;
+  --surface-raised: #132621;
+  --border: #1d3932;
+  --border-strong: #2c5148;
+  --foreground: #e3f0eb;
+  --muted: #8ca9a0;
+  --accent: #65d5bd;
+  --accent-foreground: #06231d;
   --amber: #f2b849;
   --signal: #7fd858;
   --danger: #f0857c;
@@ -100,6 +100,9 @@
 
   body {
     background-color: var(--background);
+    background-image:
+      radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 32rem),
+      radial-gradient(circle at 90% 18%, color-mix(in srgb, var(--amber) 7%, transparent), transparent 28rem);
     color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -124,6 +127,10 @@
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
+
+  a {
+    text-underline-offset: 3px;
+  }
 }
 
 @layer utilities {
@@ -136,6 +143,22 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .surface-lift {
+    box-shadow: 0 18px 45px -34px color-mix(in srgb, var(--foreground) 45%, transparent);
+    transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .surface-lift:hover {
+    border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    background-color: var(--surface-raised);
+    box-shadow: 0 22px 50px -32px color-mix(in srgb, var(--accent) 38%, transparent);
+    transform: translateY(-3px);
+  }
+
+  .section-wash {
+    background-color: color-mix(in srgb, var(--surface) 52%, transparent);
   }
 }
 

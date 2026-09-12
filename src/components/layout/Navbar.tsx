@@ -27,8 +27,8 @@ export function Navbar({ onOpenPalette }: { onOpenPalette: () => void }) {
       className={cn(
         'sticky top-0 z-40 border-b border-transparent transition-all duration-200',
         scrolled
-          ? 'border-border bg-background/80 py-2.5 backdrop-blur-md'
-          : 'bg-background py-4',
+          ? 'border-border/80 bg-background/85 py-2.5 shadow-sm backdrop-blur-xl'
+          : 'bg-background/70 py-4 backdrop-blur-sm',
       )}
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 sm:px-8">
@@ -46,7 +46,9 @@ export function Navbar({ onOpenPalette }: { onOpenPalette: () => void }) {
                 href={link.href}
                 className={cn(
                   'rounded-md px-3 py-1.5 text-sm transition-colors',
-                  active ? 'text-foreground' : 'text-muted hover:text-foreground',
+                  active
+                    ? 'bg-accent/10 text-accent'
+                    : 'text-muted hover:bg-surface-raised hover:text-foreground',
                 )}
               >
                 {link.label}

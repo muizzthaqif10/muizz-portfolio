@@ -24,7 +24,7 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <section className="border-b border-border py-16 sm:py-20">
+      <section className="section-wash border-b border-border py-16 sm:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
@@ -83,7 +83,7 @@ export default function HomePage() {
       </section>
 
       {latestPosts.length > 0 && (
-        <section className="border-b border-border py-16 sm:py-20">
+        <section className="section-wash border-b border-border py-16 sm:py-20">
           <Container>
             <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
               <SectionHeading eyebrow="writing" title="Latest Blog Posts" className="mb-0" />

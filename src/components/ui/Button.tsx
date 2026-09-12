@@ -20,12 +20,12 @@ type ButtonAsLink = BaseProps & { href: string } & Omit<
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none';
 
 const variants = {
-  primary: 'bg-accent text-accent-foreground hover:opacity-90',
+  primary: 'bg-accent text-accent-foreground shadow-lg shadow-accent/15 hover:-translate-y-0.5 hover:opacity-90',
   secondary:
-    'border border-border-strong text-foreground hover:bg-surface-raised',
+    'border border-border-strong bg-surface/50 text-foreground hover:-translate-y-0.5 hover:bg-surface-raised',
   ghost: 'text-foreground hover:bg-surface-raised',
 };
 

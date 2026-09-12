@@ -15,7 +15,7 @@ const statusTone: Record<Project['status'], 'signal' | 'amber' | 'accent' | 'mut
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="group relative flex flex-col rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50">
+    <div className="surface-lift group relative flex flex-col rounded-xl border border-border bg-surface/80 p-5">
       <div className="mb-3 flex items-start justify-between gap-3">
         <Badge tone={statusTone[project.status]}>{project.status}</Badge>
         {project.github ? (
@@ -51,7 +51,7 @@ export function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
 
-      <div className="mt-5 flex items-center gap-1.5 text-sm font-medium text-accent">
+      <div className="mt-5 flex items-center gap-1.5 text-sm font-medium text-accent transition-transform group-hover:translate-x-1">
         View case study
         <ArrowUpRight size={14} />
       </div>
