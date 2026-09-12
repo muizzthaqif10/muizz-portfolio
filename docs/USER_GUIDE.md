@@ -127,6 +127,10 @@ appear in each place.
 Open `src/data/projects.ts`. This is the biggest data file, because each project can
 have a full case-study page.
 
+Repositories should be added as normal project objects with a local `slug`, description,
+tech stack, and GitHub URL. This makes them searchable in the project grid and gives them
+their own `/projects/[slug]` detail page.
+
 ### The basics (always required)
 
 ```ts

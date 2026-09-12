@@ -27,10 +27,51 @@ export type Project = {
   challenges?: string;
   learnings?: string;
   futureImprovements?: string;
+  relatedRepos?: { name: string; url: string }[];
   isPlaceholder?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: 'bizmathpro-quiz-platform',
+    name: 'BizMathPro Quiz Platform',
+    description:
+      'A complete math quiz platform built for a freelance client, combining a React frontend with a Sequelize.js REST API and hosted MySQL database.',
+    longDescription:
+      'BizMathPro is a simple math quiz experience created for a client. The responsive frontend presents the quiz flow clearly, while a separately deployed API handles quiz data and server-side operations.',
+    categories: ['Frontend', 'Full Stack', 'Backend', 'API'],
+    stack: [
+      'React',
+      'Tailwind CSS',
+      'Node.js',
+      'Express',
+      'Sequelize.js',
+      'MySQL',
+      'REST API',
+      'Vercel',
+      'Render',
+      'Clever Cloud',
+    ],
+    github: 'https://github.com/muizzthaqif10/Quiz-App',
+    demo: 'https://bizmathpro.vercel.app',
+    status: 'Live',
+    featured: true,
+    year: '2026',
+    relatedRepos: [
+      {
+        name: 'Quiz API backend',
+        url: 'https://github.com/muizzthaqif10/api-quiz-app',
+      },
+    ],
+    problem:
+      'The client needed a straightforward, accessible math quiz website with a separate backend for serving and managing quiz content.',
+    solution:
+      'Created a React frontend with Tailwind CSS and connected it to a Node.js and Sequelize.js REST API backed by hosted MySQL.',
+    implementation:
+      'The frontend is hosted on Vercel and uses the quiz API deployed with Render and Clever Cloud MySQL as its data source. Tailwind CSS provides the responsive layout while React manages the quiz interaction flow.',
+    learnings:
+      'This freelance project gave me practical experience delivering a complete frontend-to-API workflow, from responsive UI implementation through database-backed deployment and client-facing delivery.',
+  },
   {
     slug: 'core-banking-integration-middleware',
     name: 'Core Banking Integration Middleware',

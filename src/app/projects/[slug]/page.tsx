@@ -108,6 +108,30 @@ export default async function ProjectDetailPage({ params }: Props) {
         ))}
       </div>
 
+      {project.relatedRepos && project.relatedRepos.length > 0 && (
+        <div className="mt-10">
+          <h2 className="mb-4 font-mono text-sm text-accent">
+            <span className="text-muted">{'// '}</span>
+            related repositories
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {project.relatedRepos.map((repo) => (
+              <a
+                key={repo.url}
+                href={repo.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 rounded-lg border border-border-strong px-4 py-2 text-sm text-foreground hover:bg-surface-raised"
+              >
+                <GithubIcon size={15} />
+                {repo.name}
+                <ArrowUpRight size={14} />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
       {project.architecture && project.architecture.length > 0 && (
         <div className="mt-12">
           <h2 className="mb-4 font-mono text-sm text-accent">
