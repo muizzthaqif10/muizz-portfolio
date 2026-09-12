@@ -6,26 +6,25 @@ export const profile = {
   shortName: 'Muizz',
   initials: 'MR',
   title: 'Software Engineer',
-  tagline: 'Integration & Delivery · Backend · APIs · Cloud & Kubernetes',
-  location: 'Kuala Lumpur, Malaysia',
-  role: 'Software Engineer, Project Delivery & Integration',
+  tagline: 'Integration & Backend Specialist',
+  location: 'Cheras, Selangor, Malaysia',
+  role: 'Software Engineer — Project Delivery & Integration',
   company: 'Silverlake',
-  companyFull: 'Silverlake Structured Services Sdn Bhd (Silverlake Axis Group)',
+  companyFull: 'Silverlake Structured Services Sdn Bhd | CloudLink.AI',
 
-  // --- Placeholders: replace with real values before deploying ---
-  email: 'muizz.thaqif@gmail.com', // [Add real email here]
-  linkedin: 'https://www.linkedin.com/in/muizzuddin-thaqif-ramlee/', // [Add real LinkedIn URL here]
-  github: 'https://github.com/muizzthaqif10', // [Add real GitHub URL here]
-  githubUsername: '', // [Add real GitHub username here to enable live repo fetching]
+  email: 'muizz.thaqif@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/muizzuddin-thaqif-ramlee/',
+  github: 'https://github.com/muizzthaqif10',
+  githubUsername: 'muizzthaqif10',
   resumeUrl: '/resume.pdf',
 
   summary:
-    "I'm a software engineer working on the systems that sit between applications rather than the ones people click on directly — integration middleware, API mapping, and the backend plumbing that keeps a core banking platform talking to everything around it. Most of my day is spent reading payload specs, tracing a field through three layers of transformation, and figuring out why one of them disagrees with the other two.",
+    'Results-driven Software Engineer with hands-on experience in enterprise system integration, Java/Spring Boot backend development, and cloud-native deployment within the banking and financial services sector. Proven track record as a project-side technical owner for cross-border banking integrations — root-causing critical middleware defects, authoring integration standards adopted across engineering teams, and building QA tracking tooling that improves release reliability.',
 
   about: [
-    "I work as a software engineer on project delivery and integration at Silverlake, focused on the middleware layer that connects a core banking platform to the channel and partner systems around it. Day to day, that means configuring and debugging API data mappings, tracing payload transformations across multiple transaction types, and figuring out why a field that works in one environment doesn't in another.",
-    "A lot of the job is investigative: comparing a JSON payload against a mapping spec line by line, reading through field-processing scripts to find where an edge case slips through, and working with Kubernetes-based deployment environments to reproduce and verify fixes. I've picked up a working understanding of database internals, message transformation, and deployment tooling mostly by needing them to solve a specific problem in front of me.",
-    "Outside of work, I'm building out my backend and infrastructure fundamentals more deliberately — going deeper on Kubernetes by running my own cluster locally, and learning Go with the goal of being comfortable writing production backend services in it, coming from a primarily Java background.",
+    "I work as a software engineer on project delivery and integration at Silverlake, focused on CloudLink.AI middleware that connects Mobius Core Banking with external and legacy banking systems. My day-to-day includes configuring message mappings, debugging payload transformation issues, and coordinating fixes across integration, QA, runtime, and platform teams for production-ready delivery.",
+    "The work spans Java/Spring Boot backend services, API design, data transformation, and issue ownership across the full lifecycle of a banking integration. I have been directly involved in delivering cross-border and hire-purchase integration solutions, building strong functional understanding of lending processes such as loan booking, disbursement, EIR and amortisation while translating business requirements into technical interface design and deployment-ready delivery.",
+    "Beyond core delivery, I take ownership of root-cause analysis, documentation, and release validation across multiple environments. I also continue to deepen my backend and infrastructure fundamentals through Kubernetes, Docker, Helm, Go, and distributed systems learning to strengthen my engineering foundation beyond the current integration work.",
   ],
 
   currentlyLearning: [
@@ -39,15 +38,15 @@ export const profile = {
     'Integration engineering on a core banking middleware platform — API mapping configuration, payload debugging, and Kubernetes-based deployment support.',
 
   education: {
-    degree: 'Bachelor of Software Engineering',
+    degree: 'Bachelor of Software Engineering (Information System Development) (Hons)',
     institution: 'Universiti Kebangsaan Malaysia (UKM)',
-    detail: 'CGPA 3.47',
+    detail: 'CGPA 3.47 | Major: Information System Development',
   },
 
   social: {
-    github: 'https://github.com/muizz-placeholder',
-    linkedin: 'https://linkedin.com/in/muizzuddin-placeholder',
-    email: 'mailto:muizz@example.com',
+    github: 'https://github.com/muizzthaqif10',
+    linkedin: 'https://www.linkedin.com/in/muizzuddin-thaqif-ramlee/',
+    email: 'mailto:muizz.thaqif@gmail.com',
   },
 } as const;
 

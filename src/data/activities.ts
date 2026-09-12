@@ -53,22 +53,6 @@ export const activities: Activity[] = [
       'Building toward writing production-grade backend services in Go, coming from a primarily Java background.',
     category: 'Technical Learning',
   },
-  {
-    id: 'placeholder-certification',
-    date: '[Date]',
-    title: '[Add certification here]',
-    description: '[Placeholder — replace with a real certification, or remove this entry.]',
-    category: 'Certifications',
-    isPlaceholder: true,
-  },
-  {
-    id: 'placeholder-hackathon',
-    date: '[Date]',
-    title: '[Add hackathon or community event here]',
-    description: '[Placeholder — replace with a real event, or remove this entry.]',
-    category: 'Hackathons',
-    isPlaceholder: true,
-  },
 ];
 
 export type RoadmapStatus = 'Completed' | 'Learning' | 'Next';

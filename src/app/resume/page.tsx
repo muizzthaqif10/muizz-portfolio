@@ -130,8 +130,11 @@ export default function ResumePage() {
         </section>
 
         <section className="pt-6">
-          <h2 className="mb-2 font-mono text-xs uppercase tracking-wide text-accent">Achievements</h2>
-          <p className="text-sm text-muted">[Add achievements or awards here as they come up.]</p>
+          <h2 className="mb-2 font-mono text-xs uppercase tracking-wide text-accent">Current Focus</h2>
+          <p className="text-sm text-muted">
+            Deepening backend fundamentals in Go and Kubernetes, with emphasis on distributed systems,
+            system design, and production-ready deployment patterns.
+          </p>
         </section>
       </div>
     </Container>

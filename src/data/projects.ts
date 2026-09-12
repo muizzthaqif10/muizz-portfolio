@@ -108,18 +108,4 @@ export const projects: Project[] = [
     learnings:
       'My first exposure to authentication flows in a real product — specifically the details of OAuth handshakes and SDK-based auth, which don\'t fully click until you\'ve had to debug one that isn\'t working.',
   },
-  {
-    slug: 'placeholder-backend-project',
-    name: '[Add a personal backend/API project here]',
-    description:
-      '[Placeholder — replace with a real personal project: what it does, why you built it, and what it taught you.]',
-    categories: ['Backend', 'API'],
-    stack: ['Go', 'PostgreSQL'],
-    github: null,
-    demo: null,
-    status: 'Planned',
-    featured: false,
-    year: '—',
-    isPlaceholder: true,
-  },
 ];
