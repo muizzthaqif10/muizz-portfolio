@@ -16,7 +16,9 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/muizzuddin-thaqif-ramlee/',
   github: 'https://github.com/muizzthaqif10',
   githubUsername: 'muizzthaqif10',
-  resumeUrl: '/resume.pdf',
+  image: '/images/portfolio/myself_1.jpeg',
+  gallery: ['/images/portfolio/myself_1.jpeg', '/images/portfolio/myself_2.jpeg', '/images/portfolio/myself_3.jpeg', '/images/portfolio/myself_4.jpeg'],
+  resumeUrl: '/Muizzuddin_Thaqif_Resume_V4.pdf',
 
   summary:
     'Results-driven Software Engineer with hands-on experience in enterprise system integration, Java/Spring Boot backend development, and cloud-native deployment within the banking and financial services sector. Proven track record as a project-side technical owner for cross-border banking integrations — root-causing critical middleware defects, authoring integration standards adopted across engineering teams, and building QA tracking tooling that improves release reliability.',
@@ -40,7 +42,21 @@ export const profile = {
   education: {
     degree: 'Bachelor of Software Engineering (Information System Development) (Hons)',
     institution: 'Universiti Kebangsaan Malaysia (UKM)',
-    detail: 'CGPA 3.47 | Major: Information System Development',
+    detail: 'CGPA 3.5 | Major: Information System Development',
+    previous: [
+      {
+        qualification: 'Foundation in Pure Science',
+        institution: 'Pusat Genius Pintar UKM',
+        period: 'Jun 2019 – Jun 2020',
+        result: 'Grade 3.5',
+      },
+      {
+        qualification: 'Secondary School',
+        institution: 'Sekolah Menengah Sains Lahad Datu, Sabah',
+        period: 'SPM',
+        result: '9A',
+      },
+    ],
   },
 
   social: {

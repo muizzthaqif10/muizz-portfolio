@@ -165,9 +165,10 @@ doc.font('Helvetica').fontSize(9).fillColor('#475569').text('September 2023 – 
 doc.font('Helvetica').fontSize(9).fillColor('#475569').text('Nexmind AI');
 doc.moveDown(0.4);
 const internshipBullets = [
-  'Developed Text2Social, a Vue.js-powered feature enabling AI-generated social media captions and integrated directly into the NexMind AI SaaS platform and adopted by the production user base.',
-  'Engineered OAuth authentication flows for Facebook, LinkedIn, Instagram, and Twitter APIs, enabling secure token management and direct social posting from the platform.',
-  'Collaborated with backend engineers to design seamless API integrations, contributing to bug resolution and feature stability across the NexMind AI platform.',
+  'Contributed to Text2Social using Vue.js, enabling clients to generate engaging social media captions to strengthen their online presence.',
+  'Collaborated with backend developers to design and implement authentication flows for Facebook, Instagram, LinkedIn, and Twitter integrations.',
+  'Integrated secure authentication mechanisms using the LinkedIn API, Facebook SDK, and Twitter API to manage user access tokens and enable automated posting of generated content.',
+  'Assisted with debugging, troubleshooting, and resolving platform issues to improve the stability and performance of the NexMind AI platform.',
 ];
 for (const item of internshipBullets) {
   doc.font('Helvetica').fontSize(8.7).fillColor('#374151').text(`• ${item}`, { width: 480 });
@@ -195,8 +196,13 @@ addSection(doc, 'EDUCATION');
 doc.font('Helvetica-Bold').fontSize(10).fillColor('#111827').text('Bachelor of Software Engineering (Information System Development) (Hons)');
 doc.font('Helvetica').fontSize(9).fillColor('#475569').text('Sept 2020 – Sept 2023');
 doc.font('Helvetica').fontSize(9).fillColor('#475569').text('Universiti Kebangsaan Malaysia (UKM)');
-doc.font('Helvetica').fontSize(9).fillColor('#475569').text('CGPA: 3.47 | Major: Information System Development');
+doc.font('Helvetica').fontSize(9).fillColor('#475569').text('CGPA: 3.5 | Major: Information System Development');
 doc.font('Helvetica').fontSize(9).fillColor('#475569').text('Relevant Coursework: Object-Oriented Programming, Data Structures & Algorithms, Software Engineering Principles, Database Management Systems, Web Application Development, Computer Networks, AI & Machine Learning');
+doc.moveDown(0.3);
+doc.font('Helvetica-Bold').fontSize(9.5).fillColor('#111827').text('Foundation in Pure Science');
+doc.font('Helvetica').fontSize(9).fillColor('#475569').text('Pusat Genius Pintar UKM | Jun 2019 – Jun 2020 | Grade 3.5');
+doc.font('Helvetica-Bold').fontSize(9.5).fillColor('#111827').text('Secondary School');
+doc.font('Helvetica').fontSize(9).fillColor('#475569').text('Sekolah Menengah Sains Lahad Datu, Sabah | SPM: 9A');
 doc.moveDown(0.8);
 
 addSection(doc, 'CERTIFICATIONS, LANGUAGES & ADDITIONAL');

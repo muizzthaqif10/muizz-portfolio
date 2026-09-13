@@ -37,7 +37,7 @@ export function Hero() {
                 View Projects
                 <ArrowUpRight size={16} aria-hidden />
               </Button>
-              <Button href={profile.resumeUrl} variant="secondary">
+              <Button href={profile.resumeUrl} download="Muizzuddin_Thaqif_Resume_V4.pdf" variant="secondary">
                 Download Resume
               </Button>
             </div>

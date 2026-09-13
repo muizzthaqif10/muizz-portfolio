@@ -21,7 +21,12 @@ export const experience: ExperienceItem[] = [
     summary:
       'Delivered enterprise banking integration work for CloudLink.AI middleware, covering API mapping, middleware configuration, backend integration development, and production issue resolution for core banking projects.',
     highlights: [
-      'Served as project-side technical owner for CloudLink integration delivery on the KKP hire-purchase banking project, coordinating across Product, Runtime, QA, Architecture, and infrastructure teams to ship production-ready integration solutions.',
+      'Contributed to the KKP Thai Bank Hire Purchase modernization from initial requirement gathering through integration scoping and Interface Design Document preparation, supporting the transition from the legacy Hire Purchase platform to Mobius Core Banking.',
+      'Mapped the KKP target-state application and integration landscape with bank stakeholders and the Enterprise Architecture team, covering LOS, disbursement, tax, customer/CIF, car dealer and supporting systems, along with their upstream and downstream responsibilities.',
+      'Analyzed and categorized legacy Hire Purchase interfaces across online APIs, Kafka events, scheduled APIs and batch/file processing, identifying where integrations should be replaced, consolidated, redirected or redesigned for Mobius.',
+      'Documented complex loan creation and disbursement dependencies, including CIF synchronization, reference number generation, dealer validation and creation, dealer limit and rate checks, sequencing requirements and downstream processing across multiple channels.',
+      'Contributed to consolidated Mobius inquiry APIs for customer information, account and loan balances, outstanding debt, relationships and other Hire Purchase-related information, establishing scope before detailed field-level technical design.',
+      'Prepared and maintained Interface Design Documents covering interface purpose, source and target systems, business flows, communication mechanisms, request and response structures, processing sequences and integration dependencies.',
       'Delivered end-to-end integration support for CloudLink, a middleware platform that translates and routes messages between Mobius Core Banking and external or legacy bank systems, ensuring interoperability across channels and environments.',
       'Built and maintained backend integration services using Java and Spring Boot, implementing Controller–Service–Data Layer patterns, DTO-based request/response models, and downstream service integrations for enterprise banking flows.',
       'Owned source-to-target message translation and mapping design across JSON, fixed-length and XML formats, covering conditional and lookup logic, date/time conversion, character encoding, and error/response translation requirements.',
@@ -58,12 +63,12 @@ export const experience: ExperienceItem[] = [
     start: 'Sep 2023',
     end: 'Feb 2024',
     summary:
-      'Developed Text2Social, a Vue.js-powered feature enabling AI-generated social captions and integrated OAuth-based social posting flows into the NexMind AI SaaS platform.',
+      'Contributed to Text2Social, a Vue.js-powered feature that generates engaging social media captions and supports automated publishing across multiple platforms.',
     highlights: [
-      'Developed Text2Social, a Vue.js-powered feature that enables AI-generated social media captions and is adopted by the production user base.',
-      'Engineered OAuth authentication flows for Facebook, LinkedIn, Instagram and Twitter APIs, enabling secure token management and direct social posting from the platform.',
-      'Collaborated with backend engineers and product stakeholders to design seamless API integrations and support feature stability across the NexMind AI platform.',
-      'Used Axios and Postman to validate API behavior and debug integration issues during development.',
+      'Contributed to the development of Text2Social using Vue.js, enabling clients to generate engaging social media captions to strengthen their online presence.',
+      'Collaborated with backend developers to design and implement authentication flows for Facebook, Instagram, LinkedIn and Twitter integrations.',
+      'Integrated secure authentication mechanisms using the LinkedIn API, Facebook SDK and Twitter API to manage user access tokens and enable automated posting of generated content.',
+      'Assisted with debugging, troubleshooting and resolving platform issues to improve the stability and performance of the Nexmind AI platform.',
     ],
     stack: ['Vue.js', 'Axios', 'Node.js', 'Postman', 'OAuth', 'Quill'],
   },
@@ -82,7 +87,7 @@ export const journeyTimeline: TimelineMilestone[] = [
     year: 'Education',
     title: 'Bachelor of Software Engineering (Information System Development) (Hons), UKM',
     description:
-      'Universiti Kebangsaan Malaysia — CGPA 3.47. Relevant coursework included object-oriented programming, data structures, software engineering, databases, web apps, computer networks and AI/machine learning.',
+      'Universiti Kebangsaan Malaysia — CGPA 3.5. Previously completed a Foundation in Pure Science at Pusat Genius Pintar UKM (Jun 2019 – Jun 2020, Grade 3.5) and SPM at Sekolah Menengah Sains Lahad Datu, Sabah (9A).',
   },
   {
     id: 'internship',

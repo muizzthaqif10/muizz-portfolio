@@ -137,15 +137,18 @@ story.append(Spacer(1, 8))
 story.append(Paragraph("Frontend Intern &mdash; NexMind", role_style))
 story.append(Paragraph("2023", meta_style))
 for point in [
-    "Built frontend features for the Text2Social project using Vue.js, working from design and API specs through to implementation.",
-    "Integrated OAuth-based SDK authentication flows for connecting third-party social accounts and verified endpoint behavior with Postman during development.",
-    "Implemented rich-text editing features using the Quill editor and Axios-based API integration.",
+    "Contributed to Text2Social using Vue.js, enabling clients to generate engaging social media captions to strengthen their online presence.",
+    "Collaborated with backend developers to design and implement authentication flows for Facebook, Instagram, LinkedIn, and Twitter integrations.",
+    "Integrated secure authentication mechanisms using the LinkedIn API, Facebook SDK, and Twitter API to manage user access tokens and enable automated posting of generated content.",
+    "Assisted with debugging, troubleshooting, and resolving platform issues to improve the stability and performance of the NexMind AI platform.",
 ]:
     story.append(Paragraph(f"&bull; {point}", bullet_style))
 
 story.append(Paragraph("EDUCATION", section_style))
 story.append(Paragraph("Bachelor of Software Engineering", role_style))
-story.append(Paragraph("Universiti Kebangsaan Malaysia (UKM) &nbsp;·&nbsp; CGPA 3.47", meta_style))
+story.append(Paragraph("Universiti Kebangsaan Malaysia (UKM) &nbsp;·&nbsp; CGPA 3.5", meta_style))
+story.append(Paragraph("Foundation in Pure Science &mdash; Pusat Genius Pintar UKM &nbsp;·&nbsp; Jun 2019 &ndash; Jun 2020 &nbsp;·&nbsp; Grade 3.5", meta_style))
+story.append(Paragraph("Secondary School &mdash; Sekolah Menengah Sains Lahad Datu, Sabah &nbsp;·&nbsp; SPM 9A", meta_style))
 
 story.append(Paragraph("TECHNICAL SKILLS", section_style))
 skills = [

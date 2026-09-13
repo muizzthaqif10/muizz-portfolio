@@ -26,7 +26,21 @@ export const activities: Activity[] = [
     date: '2020 – 2023',
     title: 'Bachelor of Software Engineering, UKM',
     description:
-      'Universiti Kebangsaan Malaysia. Graduated with a CGPA of 3.47, covering programming fundamentals, databases, and software design.',
+      'Universiti Kebangsaan Malaysia. Graduated with a CGPA of 3.5, covering programming fundamentals, databases, and software design.',
+    category: 'University',
+  },
+  {
+    id: 'genius-pintar-foundation',
+    date: 'Jun 2019 – Jun 2020',
+    title: 'Foundation in Pure Science, Pusat Genius Pintar UKM',
+    description: 'Completed a Foundation in Pure Science with a Grade 3.5.',
+    category: 'University',
+  },
+  {
+    id: 'spm',
+    date: 'SPM',
+    title: 'Sekolah Menengah Sains Lahad Datu, Sabah',
+    description: 'Achieved 9A in the Sijil Pelajaran Malaysia (SPM).',
     category: 'University',
   },
   {
@@ -34,7 +48,7 @@ export const activities: Activity[] = [
     date: '2023',
     title: 'Frontend Internship at NexMind',
     description:
-      'Worked on the Text2Social project — Vue.js frontend features and OAuth-based SDK authentication integration.',
+      'Contributed to Text2Social using Vue.js, implementing secure multi-platform authentication and automated social posting while helping resolve platform issues.',
     category: 'Personal Projects',
   },
   {

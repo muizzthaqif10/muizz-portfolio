@@ -22,7 +22,7 @@ export default function ResumePage() {
     <Container className="max-w-3xl py-16 sm:py-20">
       <div className="no-print mb-10 flex items-center justify-between">
         <p className="font-mono text-sm text-muted">Printable résumé — ⌘/Ctrl+P also works.</p>
-        <Button href={profile.resumeUrl}>
+        <Button href={profile.resumeUrl} download="Muizzuddin_Thaqif_Resume_V4.pdf">
           <Download size={15} />
           Download PDF
         </Button>
@@ -92,6 +92,13 @@ export default function ResumePage() {
           <p className="text-sm text-muted">
             {profile.education.institution} · {profile.education.detail}
           </p>
+          <div className="mt-3 space-y-1">
+            {profile.education.previous.map((item) => (
+              <p key={item.institution} className="text-sm text-muted">
+                <span className="font-medium text-foreground">{item.qualification}</span> — {item.institution} · {item.period} · {item.result}
+              </p>
+            ))}
+          </div>
         </section>
 
         <section className="border-b border-border py-6">

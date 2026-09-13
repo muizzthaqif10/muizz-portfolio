@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -19,6 +20,25 @@ export default function AboutPage() {
 
       <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-5">
+          <div className="mb-6 grid gap-4 sm:grid-cols-2">
+            {profile.gallery.map((image, index) => (
+              <div
+                key={`${image}-${index}`}
+                className="relative overflow-hidden rounded-2xl border border-border bg-surface p-2"
+              >
+                <div className="relative h-[220px] w-full overflow-hidden rounded-xl">
+                  <Image
+                    src={image}
+                    alt={`${profile.fullName} photo ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
           {profile.about.map((paragraph, i) => (
             <p key={i} className="leading-relaxed text-foreground">
               {paragraph}
@@ -70,6 +90,14 @@ export default function AboutPage() {
             <p className="mt-3 font-medium text-foreground">{profile.education.degree}</p>
             <p className="text-sm text-muted">{profile.education.institution}</p>
             <p className="text-sm text-muted">{profile.education.detail}</p>
+            <div className="mt-4 space-y-3 border-t border-border pt-4">
+              {profile.education.previous.map((item) => (
+                <div key={item.institution}>
+                  <p className="text-sm font-medium text-foreground">{item.qualification}</p>
+                  <p className="text-sm text-muted">{item.institution} · {item.period} · {item.result}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

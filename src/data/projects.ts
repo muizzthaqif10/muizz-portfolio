@@ -8,9 +8,12 @@ export type ProjectCategory =
   | 'Integration'
   | 'Learning';
 
+export type ProjectType = 'Company' | 'Personal/Freelance';
+
 export type Project = {
   slug: string;
   name: string;
+  type: ProjectType;
   description: string;
   longDescription?: string;
   categories: ProjectCategory[];
@@ -33,8 +36,50 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'kkp-thai-bank-hire-purchase-modernization',
+    name: 'KKP Thai Bank Hire Purchase Modernization',
+    type: 'Company',
+    description:
+      'Integration case study: defining the target integration landscape for a Hire Purchase migration from a legacy platform to Mobius Core Banking.',
+    longDescription:
+      'Contributed from initial requirement gathering through integration scoping and Interface Design Document preparation. The work focused on clarifying system responsibilities, interface dependencies and end-to-end business flows before detailed API design and implementation.',
+    categories: ['Integration', 'Backend', 'API'],
+    stack: [
+      'Mobius Core Banking',
+      'REST APIs',
+      'Kafka',
+      'Scheduled APIs',
+      'Batch / File Interfaces',
+      'Interface Design Documents',
+    ],
+    github: null,
+    demo: null,
+    status: 'Case Study',
+    featured: true,
+    year: '2024–Present',
+    problem:
+      'The existing Hire Purchase platform was connected to a broad and complex integration landscape. Moving the capability to Mobius required the team to understand which systems communicated with the legacy platform, what each interface supported, and how those responsibilities should change in the target state.',
+    solution:
+      'Mapped the high-level application and integration landscape with the bank and Enterprise Architecture team, categorized interfaces by communication pattern, and established the target integration scope and system responsibilities before moving into field-level design.',
+    architecture: [
+      'KKP Systems',
+      'CloudLink Integration',
+      'Mobius Core Banking',
+      'Other Cloud Applications',
+    ],
+    implementation:
+      'Analyzed inbound and outbound interfaces across online APIs, Kafka events, scheduled APIs and batch/file processing. Contributed to consolidated Mobius-facing inquiries for customer information, loan and account balances, outstanding debt, relationships and other Hire Purchase data, while documenting complex loan creation and disbursement flows.',
+    challenges:
+      'Loan creation and disbursement involved multiple dependent steps and systems, including CIF synchronization, reference number generation, dealer creation or validation, dealer limit checks, rate validation and downstream processing across multiple channels. Each flow required clear sequencing and ownership across system boundaries.',
+    learnings:
+      'The IDD process provided a shared baseline for business stakeholders, system owners, architects and technical teams. It also reinforced that integration delivery starts with understanding what systems need to communicate, why they communicate and which mechanism fits each interaction.',
+    futureImprovements:
+      'Continue the detailed technical design with field-level mappings, transformation rules, API contracts, message schemas, error handling and implementation-specific sequence definitions for each approved interface.',
+  },
+  {
     slug: 'bizmathpro-quiz-platform',
     name: 'BizMathPro Quiz Platform',
+    type: 'Personal/Freelance',
     description:
       'A complete math quiz platform built for a freelance client, combining a React frontend with a Sequelize.js REST API and hosted MySQL database.',
     longDescription:
@@ -75,6 +120,7 @@ export const projects: Project[] = [
   {
     slug: 'core-banking-integration-middleware',
     name: 'Core Banking Integration Middleware',
+    type: 'Company',
     description:
       'Case study: configuring and debugging the mapping layer that translates data between a core banking platform and its surrounding channel systems.',
     longDescription:
@@ -103,6 +149,7 @@ export const projects: Project[] = [
   {
     slug: 'kubernetes-home-lab',
     name: 'Kubernetes Home Lab',
+    type: 'Personal/Freelance',
     description:
       'A self-hosted Minikube cluster used to learn Kubernetes fundamentals hands-on — Deployments, Services, ConfigMaps, Ingress and PV/PVC.',
     longDescription:
@@ -131,8 +178,9 @@ export const projects: Project[] = [
   {
     slug: 'text2social-oauth-integration',
     name: 'Text2Social — Frontend & OAuth Integration',
+    type: 'Company',
     description:
-      'Internship project: frontend features and OAuth-based SDK authentication for a social content tool, built with Vue.js.',
+      'Internship project: a Vue.js social content tool that generates engaging captions and supports secure multi-platform publishing.',
     categories: ['Frontend', 'Integration'],
     stack: ['Vue.js', 'Axios', 'Node.js', 'OAuth', 'Quill', 'Postman'],
     github: null,
@@ -141,11 +189,11 @@ export const projects: Project[] = [
     featured: false,
     year: '2023',
     problem:
-      'Text2Social needed frontend features for composing and managing social content, including the ability to connect third-party social accounts.',
+      'Text2Social needed a way for clients to generate engaging captions and connect third-party social accounts for automated publishing.',
     solution:
-      'Built UI features in Vue.js and implemented OAuth-based SDK authentication flows so users could connect external social accounts, alongside a rich-text composer built on the Quill editor.',
+      'Contributed Vue.js features for caption generation and implemented secure authentication flows for Facebook, Instagram, LinkedIn and Twitter integrations.',
     implementation:
-      'Used Axios for API integration and Postman to verify endpoint behavior during development, working from design and API specs provided by the team.',
+      'Used the LinkedIn API, Facebook SDK and Twitter API to manage access tokens and support automated posting, while collaborating with backend developers and troubleshooting platform issues.',
     learnings:
       'My first exposure to authentication flows in a real product — specifically the details of OAuth handshakes and SDK-based auth, which don\'t fully click until you\'ve had to debug one that isn\'t working.',
   },

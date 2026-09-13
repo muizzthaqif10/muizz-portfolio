@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import type { Project, ProjectCategory } from '@/data/projects';
+import type { Project, ProjectCategory, ProjectType } from '@/data/projects';
 import { ProjectGrid } from './ProjectGrid';
 
 const filterCategories: ('All' | ProjectCategory)[] = [
@@ -30,6 +30,19 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
       return matchesCategory && matchesQuery;
     });
   }, [projects, category, query]);
+
+  const projectGroups: { type: ProjectType; title: string; description: string }[] = [
+    {
+      type: 'Company',
+      title: 'Company Projects',
+      description: 'Enterprise and internship work delivered with company teams and stakeholders.',
+    },
+    {
+      type: 'Personal/Freelance',
+      title: 'Personal & Freelance Projects',
+      description: 'Independent work, freelance delivery and experiments built to deepen practical engineering skills.',
+    },
+  ];
 
   return (
     <div>
@@ -64,7 +77,34 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
         </div>
       </div>
 
-      <ProjectGrid projects={filtered} />
+      {filtered.length === 0 ? (
+        <p className="rounded-xl border border-dashed border-border p-10 text-center text-sm text-muted">
+          No projects match this filter yet.
+        </p>
+      ) : (
+        <div className="space-y-14">
+          {projectGroups.map((group) => {
+            const groupProjects = filtered.filter((project) => project.type === group.type);
+
+            if (groupProjects.length === 0) return null;
+
+            return (
+              <section key={group.type} aria-labelledby={`${group.type.toLowerCase()}-projects-heading`}>
+                <div className="mb-5 border-l-2 border-accent pl-4">
+                  <h2
+                    id={`${group.type.toLowerCase()}-projects-heading`}
+                    className="text-xl font-semibold text-foreground"
+                  >
+                    {group.title}
+                  </h2>
+                  <p className="mt-1 text-sm text-muted">{group.description}</p>
+                </div>
+                <ProjectGrid projects={groupProjects} />
+              </section>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
