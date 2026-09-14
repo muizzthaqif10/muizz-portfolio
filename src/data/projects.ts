@@ -40,7 +40,7 @@ export const projects: Project[] = [
     name: 'KKP Thai Bank Hire Purchase Modernization',
     type: 'Company',
     description:
-      'Integration case study: defining the target integration landscape for a Hire Purchase migration from a legacy platform to Mobius Core Banking.',
+      "Integration case study: mapping the target landscape for a Thai bank's Hire Purchase migration from a legacy platform to Mobius Core Banking.",
     longDescription:
       'Contributed from initial requirement gathering through integration scoping and Interface Design Document preparation. The work focused on clarifying system responsibilities, interface dependencies and end-to-end business flows before detailed API design and implementation.',
     categories: ['Integration', 'Backend', 'API'],

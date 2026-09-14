@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(seo.url),
   title: {
     default: seo.title,
-    template: `%s | ${profile.shortName}`,
+    template: `%s | ${profile.fullName}`,
   },
   description: seo.description,
   alternates: { canonical: '/' },

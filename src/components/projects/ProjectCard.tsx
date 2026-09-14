@@ -45,6 +45,17 @@ export function ProjectCard({ project }: { project: Project }) {
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-muted">{project.description}</p>
 
+      <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-y border-border py-3 text-xs">
+        <div>
+          <dt className="font-mono uppercase tracking-wide text-muted">Type</dt>
+          <dd className="mt-1 text-foreground">{project.type}</dd>
+        </div>
+        <div>
+          <dt className="font-mono uppercase tracking-wide text-muted">Timeline</dt>
+          <dd className="mt-1 text-foreground">{project.year}</dd>
+        </div>
+      </dl>
+
       <div className="mt-4 flex flex-wrap gap-1.5">
         {project.stack.slice(0, 4).map((tech) => (
           <TechBadge key={tech} label={tech} />

@@ -20,6 +20,9 @@ export default function AboutPage() {
 
       <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-5">
+          <p className="text-xl font-semibold text-foreground sm:text-2xl">
+            Hi, I&apos;m {profile.fullName}.
+          </p>
           <div className="mb-6 grid gap-4 sm:grid-cols-2">
             {profile.gallery.map((image, index) => (
               <div

@@ -15,6 +15,7 @@ import { skillGroups } from '@/data/skills';
 import { experience } from '@/data/experience';
 import { profile } from '@/data/profile';
 import { getAllPosts } from '@/lib/mdx';
+import { EngineeringStory } from '@/components/home/EngineeringStory';
 
 export default function HomePage() {
   const featuredProjects = projects.filter((p) => p.featured);
@@ -23,6 +24,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <EngineeringStory />
 
       <section className="section-wash border-b border-border py-16 sm:py-20">
         <Container>

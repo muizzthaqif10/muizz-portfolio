@@ -21,15 +21,19 @@ export function Hero() {
           <div>
             <p className="mb-5 inline-flex rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 font-mono text-xs text-accent">
               <span className="text-muted">{'// '}</span>
-              hi, I&apos;m {profile.shortName}
+              {profile.title} · {profile.location}
             </p>
+            <p className="text-lg font-semibold text-accent sm:text-xl">{profile.fullName}</p>
             <h1 className="mt-5 max-w-3xl text-balance text-4xl font-semibold leading-[1.06] text-foreground sm:text-6xl">
-              Software engineer building integrations, APIs &amp; cloud systems.
+              Software engineer shipping reliable integrations, APIs &amp; cloud systems.
             </h1>
             <p className="mt-7 max-w-xl text-balance text-lg leading-relaxed text-muted">
-              I work on software that connects applications, services and banking
-              platforms to each other — the middleware, mappings and infrastructure
-              most people never see.
+              I build and debug the backend systems that connect banking platforms,
+              applications and services across production environments.
+            </p>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-foreground">
+              2+ years in banking and fintech delivery, with hands-on ownership across
+              Java/Spring Boot, API mapping, Kubernetes and release validation.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -37,10 +41,17 @@ export function Hero() {
                 View Projects
                 <ArrowUpRight size={16} aria-hidden />
               </Button>
-              <Button href={profile.resumeUrl} download="Muizzuddin_Thaqif_Resume_V4.pdf" variant="secondary">
-                Download Resume
+              <Button href="/resume" variant="secondary">
+                View Resume
+              </Button>
+              <Button href="/contact" variant="ghost">
+                Contact Me
               </Button>
             </div>
+
+            <p className="mt-6 max-w-xl font-mono text-xs leading-relaxed text-accent">
+              Open to Software Engineering, Backend, Integration and Platform Engineering opportunities.
+            </p>
 
             <div className="mt-10 flex items-center gap-5 text-muted">
               <a
