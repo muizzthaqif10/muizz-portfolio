@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Badge } from '@/components/ui/Badge';
 import { profile } from '@/data/profile';
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <Container className="py-16 sm:py-20">
+    <PageLayout>
       <SectionHeading eyebrow="about" title="About Me" />
 
       <div className="grid gap-14 lg:grid-cols-[1.1fr_0.9fr]">
@@ -112,6 +112,6 @@ export default function AboutPage() {
         </h3>
         <LearningRoadmap items={learningRoadmap} />
       </div>
-    </Container>
+    </PageLayout>
   );
 }

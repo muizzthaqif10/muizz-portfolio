@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, Lock } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { Badge } from '@/components/ui/Badge';
 import { TechBadge } from '@/components/ui/TechBadge';
 import { ArchitectureDiagram } from '@/components/ArchitectureDiagram';
@@ -52,8 +52,8 @@ export default async function ProjectDetailPage({ params }: Props) {
   ];
 
   return (
-    <Container className="max-w-3xl py-16 sm:py-20">
-      <Link href="/projects" className="mb-8 flex items-center gap-1.5 text-sm text-muted hover:text-foreground">
+    <PageLayout className="max-w-3xl">
+      <Link href="/projects" className="mb-10 flex items-center gap-1.5 text-sm text-muted hover:text-foreground">
         <ArrowLeft size={15} />
         Back to projects
       </Link>
@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <span className="font-mono text-xs text-muted">{project.year}</span>
       </div>
 
-      <h1 className="text-3xl font-semibold text-foreground sm:text-4xl">{project.name}</h1>
+      <h1 className="break-words text-3xl font-semibold text-foreground sm:text-4xl">{project.name}</h1>
       <p className="mt-4 text-lg leading-relaxed text-muted">{project.description}</p>
 
       {project.longDescription && (
@@ -152,6 +152,6 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
           ))}
       </div>
-    </Container>
+    </PageLayout>
   );
 }

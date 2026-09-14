@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SkillGroup } from '@/components/skills/SkillGroup';
 import { SkillCard } from '@/components/skills/SkillCard';
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SkillsPage() {
   return (
-    <Container className="py-16 sm:py-20">
+    <PageLayout>
       <SectionHeading
         eyebrow="skills"
         title="Technical Skills"
@@ -34,6 +34,6 @@ export default function SkillsPage() {
           ))}
         </div>
       </div>
-    </Container>
+    </PageLayout>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ExperienceTimeline } from '@/components/experience/ExperienceTimeline';
 import { experience } from '@/data/experience';
@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <Container className="max-w-4xl py-16 sm:py-20">
+    <PageLayout className="max-w-4xl">
       <SectionHeading
         eyebrow="experience"
         title="Where I've worked"
         description="A timeline of roles, from a frontend internship through to integration engineering on core banking systems."
       />
       <ExperienceTimeline items={experience} />
-    </Container>
+    </PageLayout>
   );
 }

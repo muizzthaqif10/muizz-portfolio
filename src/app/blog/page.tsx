@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { BlogCard } from '@/components/blog/BlogCard';
 import { BlogExplorer } from '@/components/blog/BlogExplorer';
@@ -17,7 +17,7 @@ export default function BlogPage() {
   const [featured, ...rest] = posts;
 
   return (
-    <Container className="py-16 sm:py-20">
+    <PageLayout>
       <SectionHeading
         eyebrow="writing"
         title="Blog"
@@ -32,6 +32,6 @@ export default function BlogPage() {
       )}
 
       <BlogExplorer posts={rest} tags={tags} />
-    </Container>
+    </PageLayout>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProjectsExplorer } from '@/components/projects/ProjectsExplorer';
 import { GithubReposSection } from '@/components/projects/GithubReposSection';
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <Container className="py-16 sm:py-20">
+    <PageLayout>
       <SectionHeading
         eyebrow="projects"
         title="Projects"
@@ -21,6 +21,6 @@ export default function ProjectsPage() {
       />
       <ProjectsExplorer projects={projects} />
       <GithubReposSection />
-    </Container>
+    </PageLayout>
   );
 }

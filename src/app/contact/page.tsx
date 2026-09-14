@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ContactSection } from '@/components/contact/ContactSection';
 import { profile } from '@/data/profile';
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <Container className="max-w-3xl py-16 sm:py-20">
+    <PageLayout className="max-w-3xl">
       <SectionHeading eyebrow="contact" title="Contact" />
       <ContactSection withForm />
-    </Container>
+    </PageLayout>
   );
 }

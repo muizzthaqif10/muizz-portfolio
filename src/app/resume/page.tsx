@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Download, Mail, MapPin } from 'lucide-react';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { Button } from '@/components/ui/Button';
 import { profile } from '@/data/profile';
 import { experience } from '@/data/experience';
@@ -19,7 +19,7 @@ export default function ResumePage() {
   const nonPlaceholderActivities = activities.filter((a) => !a.isPlaceholder);
 
   return (
-    <Container className="max-w-3xl py-16 sm:py-20">
+    <PageLayout className="max-w-3xl">
       <div className="no-print mb-10 flex items-center justify-between">
         <p className="font-mono text-sm text-muted">Printable résumé — ⌘/Ctrl+P also works.</p>
         <Button href={profile.resumeUrl} download="Muizzuddin_Thaqif_Resume_V4.pdf">
@@ -144,6 +144,6 @@ export default function ResumePage() {
           </p>
         </section>
       </div>
-    </Container>
+    </PageLayout>
   );
 }

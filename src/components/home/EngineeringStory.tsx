@@ -19,7 +19,7 @@ export function EngineeringStory() {
     <section className="section-wash border-b border-border py-16 sm:py-20">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div>
+          <div className="min-w-0">
             <SectionHeading eyebrow="engineering-focus" title="The work between systems" />
             <p className="max-w-xl text-sm leading-relaxed text-muted">
               My strongest work is making separate systems exchange reliable, usable data. At Silverlake,
@@ -37,8 +37,8 @@ export function EngineeringStory() {
             </p>
           </div>
 
-          <div className="surface-lift rounded-xl border border-border bg-surface/80 p-5 sm:p-6">
-            <div className="mb-5 flex items-center justify-between gap-4">
+          <div className="surface-lift min-w-0 rounded-xl border border-border bg-surface/80 p-5 sm:p-6">
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
               <p className="font-mono text-xs text-muted">cloudlink.integration-flow</p>
               <span className="font-mono text-xs text-signal">JSON | XML | FIXED_LENGTH</span>
             </div>
@@ -64,11 +64,13 @@ export function EngineeringStory() {
         <div className="mt-16 border-t border-border pt-16">
           <div>
             <SectionHeading eyebrow="career-progression" title="A path toward systems engineering" />
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:gap-y-3">
               {progression.map((step, index) => (
-                <div key={step} className="flex items-center gap-2">
-                  <span className="border border-border-strong bg-surface px-3 py-2 text-sm text-foreground">{step}</span>
-                  {index < progression.length - 1 && <ArrowRight size={14} className="text-accent" aria-hidden />}
+                <div key={step} className="flex flex-col items-center gap-2 sm:flex-row sm:items-center">
+                  <span className="w-full border border-border-strong bg-surface px-3 py-2 text-center text-sm text-foreground sm:w-auto sm:text-left">{step}</span>
+                  {index < progression.length - 1 && (
+                    <ArrowRight className="rotate-90 text-accent sm:rotate-0" size={14} aria-hidden />
+                  )}
                 </div>
               ))}
             </div>

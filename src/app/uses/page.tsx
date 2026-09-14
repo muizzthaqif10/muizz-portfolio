@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container } from '@/components/ui/Container';
+import { PageLayout } from '@/components/ui/PageLayout';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { profile } from '@/data/profile';
 
@@ -25,7 +25,7 @@ const usesGroups = [
 
 export default function UsesPage() {
   return (
-    <Container className="max-w-2xl py-16 sm:py-20">
+    <PageLayout className="max-w-2xl">
       <SectionHeading
         eyebrow="uses"
         title="Uses"
@@ -51,6 +51,6 @@ export default function UsesPage() {
           </div>
         ))}
       </div>
-    </Container>
+    </PageLayout>
   );
 }

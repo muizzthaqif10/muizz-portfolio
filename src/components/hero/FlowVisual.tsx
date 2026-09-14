@@ -63,11 +63,11 @@ export function FlowVisual() {
         ))}
       </svg>
 
-      <div className="mt-4 space-y-1 border-t border-border pt-4 font-mono text-xs text-muted">
-        <p>
+      <div className="mt-4 space-y-1 border-t border-border pt-4 font-mono text-xs leading-relaxed text-muted">
+        <p className="break-all sm:break-normal">
           <span className="text-signal">200</span> POST /api/v1/transaction · 42ms
         </p>
-        <p>
+        <p className="break-all sm:break-normal">
           <span className="text-signal">200</span> GET /api/v1/mapping/status · 11ms
         </p>
       </div>
